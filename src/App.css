@@ -1,0 +1,226 @@
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(280px, 420px) minmax(320px, 420px);
+  gap: 2rem;
+  align-items: start;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.topbar {
+  padding-top: 2rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.75rem;
+  color: #fca5a5;
+  margin-bottom: 0.75rem;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
+  line-height: 0.95;
+  max-width: 10ch;
+}
+
+.ghost-button {
+  margin-top: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.85rem 1.1rem;
+  font-size: 0.95rem;
+  backdrop-filter: blur(12px);
+}
+
+.phone-frame {
+  width: min(100%, 390px);
+  justify-self: center;
+  background: rgba(12, 14, 22, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 2rem;
+  padding: 1rem;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+.feed-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.25rem 0.25rem 1rem;
+}
+
+.feed-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.feed-subtitle {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.pill {
+  font-size: 0.78rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(249, 115, 22, 0.18);
+  color: #fdba74;
+  white-space: nowrap;
+}
+
+.feed-scroll {
+  height: 78vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-right: 0.25rem;
+}
+
+.feed-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.feed-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+}
+
+.food-card {
+  scroll-snap-align: start;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.media {
+  position: relative;
+  min-height: 24rem;
+  display: flex;
+  align-items: flex-end;
+}
+
+.media-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.78), rgba(0,0,0,0.1) 55%, rgba(0,0,0,0.15));
+}
+
+.media-copy {
+  position: relative;
+  z-index: 1;
+  padding: 1.1rem;
+  color: white;
+}
+
+.delivery-pill,
+.dish-type {
+  display: inline-flex;
+  margin-bottom: 0.6rem;
+  font-size: 0.75rem;
+  border-radius: 999px;
+  padding: 0.38rem 0.62rem;
+}
+
+.delivery-pill {
+  margin-right: 0.5rem;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.dish-type {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255,255,255,0.92);
+}
+
+.media-copy h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.85rem;
+  line-height: 1;
+}
+
+.media-copy p {
+  margin: 0;
+  color: rgba(255,255,255,0.84);
+  max-width: 30ch;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.restaurant {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.details {
+  color: #94a3b8;
+  font-size: 0.92rem;
+  margin-top: 0.25rem;
+}
+
+.order-button {
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f97316, #ef4444);
+  color: white;
+  padding: 0.8rem 1rem;
+  font-weight: 700;
+  min-width: 5rem;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+
+.tag {
+  font-size: 0.78rem;
+  color: #cbd5e1;
+  background: rgba(148, 163, 184, 0.13);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 999px;
+  padding: 0.4rem 0.65rem;
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .topbar {
+    padding-top: 0.25rem;
+  }
+
+  .topbar h1 {
+    max-width: 12ch;
+  }
+
+  .phone-frame {
+    width: 100%;
+    max-width: 420px;
+  }
+}
