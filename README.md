@@ -4,26 +4,44 @@ A proof-of-concept web app for a TikTok-style food discovery feed.
 
 ## What it does
 
-- scrapes public Uber Eats store pages
-- normalizes menu items into a single feed
-- renders a vertical, mobile-style discovery UI
-- deep-links users out to Uber Eats for ordering
-- does **not** handle checkout, carts, or payments
+- scrapes **public Uber Eats store pages**
+- extracts menu items into a normalized JSON feed
+- renders those items in a vertical scroll UI
+- deep-links users out to Uber Eats for actual ordering
 
-This is deliberately scoped as a **discovery + routing** product.
+This MVP intentionally **does not** touch:
+- checkout
+- payments
+- carts
+- order placement
+
+It is a discovery + routing layer.
 
 ## Stack
 
 - React
 - Vite
-- plain CSS
-- Node-based scraper using built-in `fetch`
+- Plain CSS
+- Node scraping script using built-in `fetch`
 
-## Local run
+## Scraping flow
+
+The scraper currently targets Uber Eats public store pages and writes normalized feed data to:
+
+```bash
+src/data/feed.json
+```
+
+Run it with:
+
+```bash
+npm run scrape:ubereats
+```
+
+## Run locally
 
 ```bash
 npm install --include=dev
-npm run scrape:ubereats
 npm run dev
 ```
 
@@ -33,33 +51,17 @@ npm run dev
 npm run build
 ```
 
-## Scraper
-
-The MVP currently scrapes **one platform: Uber Eats**.
-
-Command:
-
-```bash
-npm run scrape:ubereats
-```
-
-It writes normalized feed data to:
-
-```bash
-src/data/feed.json
-```
-
 ## Current limitations
 
-- public-page scraping is brittle by nature
-- item imagery is currently using store hero images when item-level images are unavailable
-- no live location or personalization yet
-- no checkout or transaction handling
+- item images are currently store-level hero images reused per card when item-level media is unavailable
+- store URLs are seeded in the scraper script right now
+- no location-aware ETA filtering yet
+- no backend or persistent database yet
 
-## Obvious next steps
+## Next obvious steps
 
-- add more Uber Eats store URLs or make source URLs configurable
-- rank items by time of day / cuisine / clicks
-- add location-aware filtering
-- add support for DoorDash or Grubhub as additional sources
-- move from scraped bootstrap inventory to direct restaurant onboarding over time
+- support more Uber Eats stores / neighborhoods
+- add a tiny backend + stored scraped inventory
+- dedupe and rank items better
+- add saved items / basic personalization
+- eventually swap scraping for cleaner integrations where possible
