@@ -1,7 +1,7 @@
 .app-shell {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: minmax(280px, 420px) minmax(320px, 420px);
+  grid-template-columns: minmax(300px, 460px) minmax(320px, 420px);
   gap: 2rem;
   align-items: start;
   justify-content: center;
@@ -10,7 +10,7 @@
 }
 
 .topbar {
-  padding-top: 2rem;
+  padding-top: 1rem;
 }
 
 .eyebrow {
@@ -23,20 +23,59 @@
 
 .topbar h1 {
   margin: 0;
-  font-size: clamp(2.5rem, 5vw, 4.8rem);
-  line-height: 0.95;
+  font-size: clamp(2.7rem, 5vw, 5rem);
+  line-height: 0.94;
   max-width: 10ch;
 }
 
-.ghost-button {
+.lede {
+  max-width: 34rem;
+  color: #cbd5e1;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
   margin-top: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.06);
-  color: #fff;
-  border-radius: 999px;
-  padding: 0.85rem 1.1rem;
-  font-size: 0.95rem;
+}
+
+.stat-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  padding: 0.9rem 1rem;
   backdrop-filter: blur(12px);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin-bottom: 0.25rem;
+}
+
+.stat-card strong {
+  font-size: 1rem;
+}
+
+.source-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.source-pill {
+  text-decoration: none;
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 999px;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.9rem;
 }
 
 .phone-frame {
@@ -107,15 +146,17 @@
 
 .media {
   position: relative;
-  min-height: 24rem;
+  min-height: 28rem;
   display: flex;
   align-items: flex-end;
+  background-size: cover;
+  background-position: center;
 }
 
 .media-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.78), rgba(0,0,0,0.1) 55%, rgba(0,0,0,0.15));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.84), rgba(0, 0, 0, 0.12) 55%, rgba(0, 0, 0, 0.3));
 }
 
 .media-copy {
@@ -123,6 +164,12 @@
   z-index: 1;
   padding: 1.1rem;
   color: white;
+}
+
+.pill-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .delivery-pill,
@@ -135,24 +182,27 @@
 }
 
 .delivery-pill {
-  margin-right: 0.5rem;
   background: rgba(255, 255, 255, 0.16);
 }
 
+.delivery-pill.muted {
+  background: rgba(15, 23, 42, 0.5);
+}
+
 .dish-type {
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255,255,255,0.92);
+  background: rgba(249, 115, 22, 0.2);
+  color: #fed7aa;
 }
 
 .media-copy h2 {
   margin: 0 0 0.5rem;
-  font-size: 1.85rem;
-  line-height: 1;
+  font-size: 1.95rem;
+  line-height: 0.98;
 }
 
 .media-copy p {
   margin: 0;
-  color: rgba(255,255,255,0.84);
+  color: rgba(255, 255, 255, 0.88);
   max-width: 30ch;
 }
 
@@ -187,22 +237,8 @@
   padding: 0.8rem 1rem;
   font-weight: 700;
   min-width: 5rem;
-}
-
-.tag-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.9rem;
-}
-
-.tag {
-  font-size: 0.78rem;
-  color: #cbd5e1;
-  background: rgba(148, 163, 184, 0.13);
-  border: 1px solid rgba(148, 163, 184, 0.16);
-  border-radius: 999px;
-  padding: 0.4rem 0.65rem;
+  text-decoration: none;
+  text-align: center;
 }
 
 @media (max-width: 900px) {
@@ -211,12 +247,12 @@
     padding: 1rem;
   }
 
-  .topbar {
-    padding-top: 0.25rem;
-  }
-
   .topbar h1 {
     max-width: 12ch;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
   }
 
   .phone-frame {

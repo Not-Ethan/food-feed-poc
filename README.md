@@ -1,27 +1,29 @@
 # Food Feed POC
 
-A quick proof-of-concept web app for a TikTok-style food discovery feed.
+A proof-of-concept web app for a TikTok-style food discovery feed.
 
-## Concept
+## What it does
 
-Users scroll through a vertical feed of nearby dishes they can realistically get fast (roughly under 60 minutes). Each card is designed to feel more like short-form content than a static menu.
+- scrapes public Uber Eats store pages
+- normalizes menu items into a single feed
+- renders a vertical, mobile-style discovery UI
+- deep-links users out to Uber Eats for ordering
+- does **not** handle checkout, carts, or payments
 
-This POC focuses on:
-- full-screen-ish vertical feed behavior
-- dish-first discovery
-- delivery ETA + price visibility
-- easy handoff to ordering platforms
+This is deliberately scoped as a **discovery + routing** product.
 
 ## Stack
 
 - React
 - Vite
-- Plain CSS
+- plain CSS
+- Node-based scraper using built-in `fetch`
 
-## Run locally
+## Local run
 
 ```bash
 npm install --include=dev
+npm run scrape:ubereats
 npm run dev
 ```
 
@@ -31,11 +33,33 @@ npm run dev
 npm run build
 ```
 
-## Notes
+## Scraper
 
-Right now the app uses mocked data and gradient-based visual placeholders instead of real restaurant media. The next obvious steps would be:
-- real restaurant/menu ingestion
-- Uber Eats / DoorDash / direct-order deep links
-- location-aware feed ranking
-- restaurant self-serve uploads
-- sponsored placements / ads
+The MVP currently scrapes **one platform: Uber Eats**.
+
+Command:
+
+```bash
+npm run scrape:ubereats
+```
+
+It writes normalized feed data to:
+
+```bash
+src/data/feed.json
+```
+
+## Current limitations
+
+- public-page scraping is brittle by nature
+- item imagery is currently using store hero images when item-level images are unavailable
+- no live location or personalization yet
+- no checkout or transaction handling
+
+## Obvious next steps
+
+- add more Uber Eats store URLs or make source URLs configurable
+- rank items by time of day / cuisine / clicks
+- add location-aware filtering
+- add support for DoorDash or Grubhub as additional sources
+- move from scraped bootstrap inventory to direct restaurant onboarding over time
